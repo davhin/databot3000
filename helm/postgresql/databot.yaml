@@ -1,0 +1,35 @@
+auth:
+  postgresPassword: "rootpasswd"
+  username: "david"
+  password: "david"
+  database: "databot"
+
+primary:
+  persistence:
+    enabled: true
+    storageClass: ""
+    accessModes:
+      - ReadWriteOnce
+    size: 16Gi
+
+  resources:
+    limits:
+      cpu: 2
+      memory: 2Gi
+    requests:
+      cpu: 1000m
+      memory: 1024Mi
+
+  configuration: |
+    max_connections = 100
+    shared_buffers = 128MB
+    effective_cache_size = 384MB
+
+service:
+  type: ClusterIP
+  port: 5432
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: false
