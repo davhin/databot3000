@@ -1,8 +1,5 @@
 auth:
   postgresPassword: "rootpasswd"
-  username: "david"
-  password: "david"
-  database: "databot"
 
 primary:
   persistence:
@@ -21,12 +18,12 @@ primary:
       memory: 1024Mi
 
   configuration: |
-    max_connections = 100
+    max_connections = 10
     shared_buffers = 128MB
     effective_cache_size = 384MB
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 5432
 
 metrics:
