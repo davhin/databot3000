@@ -1,0 +1,17 @@
+[project]
+name = "databot"
+version = "0.1.0"
+description = "Data Extraction and Loading Tools"
+readme = "README.md"
+authors = [
+    { email = "dvd.hnrchs@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+databot = "databot:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
