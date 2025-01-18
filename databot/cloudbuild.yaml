@@ -7,6 +7,9 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/app:$COMMIT_SHA']
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 # Images to be pushed to Container Registry
 images:
   - 'gcr.io/$PROJECT_ID/app:$COMMIT_SHA'
