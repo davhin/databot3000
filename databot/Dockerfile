@@ -1,20 +1,11 @@
-# Use Node.js LTS version as the base image
-FROM node:18-slim
+# Use Python slim image for smaller size
+FROM python:3.11-slim
 
-# Set working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Create a Python file with a print statement
+RUN echo 'print("Hello from Cloud Build!")' > app.py
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
-# Expose port 8080
-EXPOSE 8080
-
-# Start the application
-CMD ["npm", "start"]
+# Run the Python script
+CMD ["python", "app.py"]
