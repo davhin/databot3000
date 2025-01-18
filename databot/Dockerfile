@@ -4,8 +4,5 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Create a Python file with a print statement
-RUN echo 'print("Hello from Cloud Build!")' > app.py
-
-# Run the Python script
-CMD ["python", "app.py"]
+# Run Python with the print command
+CMD ["python", "-c", "print('Hello from Cloud Build!')"]

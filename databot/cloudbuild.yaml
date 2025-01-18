@@ -3,5 +3,8 @@ steps:
   script: |
     docker build -t us-central1.pkg.dev/$PROJECT_ID/databot/databot .
   automapSubstitutions: true
+
+options:
+  logging: CLOUD_LOGGING_ONLY
 images:
 - 'us-central1.pkg.dev/$PROJECT_ID/databot/databot'
