@@ -1,15 +1,7 @@
 steps:
-  # Build the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/app:$COMMIT_SHA', '.']
-  
-  # Push the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/app:$COMMIT_SHA']
-
-options:
-  logging: CLOUD_LOGGING_ONLY
-
-# Images to be pushed to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  script: |
+    docker build -t us-central1.pkg.dev/$PROJECT_ID/databot/databot .
+  automapSubstitutions: true
 images:
-  - 'gcr.io/$PROJECT_ID/app:$COMMIT_SHA'
+- 'us-central1.pkg.dev/$PROJECT_ID/databot/databot'
