@@ -1,8 +1,23 @@
-# Use Python slim image for smaller size
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
-# Set working directory
+# The installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
+
+# Download the latest installer
+ADD https://astral.sh/uv/0.5.13/install.sh /uv-installer.sh
+
+# Run the installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
+
+# Copy the project into the image
+ADD . /app
+
+# Sync the project into a new environment, using the frozen lockfile
 WORKDIR /app
+RUN uv sync --frozen
 
 # Run Python with the print command
 CMD ["python", "-c", "print('Hello from Cloud Build!')"]

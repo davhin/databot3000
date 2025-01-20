@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-scraper = "scraper:main"
+scraper = "databot:hello"
 
 [build-system]
 requires = ["hatchling"]
