@@ -6,9 +6,10 @@ steps:
       - |
         echo "Pulling the cached image"
         docker pull us-central1-docker.pkg.dev/$PROJECT_ID/databot/databot || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  script: |
-    docker build -t us-central1-docker.pkg.dev/$PROJECT_ID/databot/databot -f Dockerfile .
+
+  - name: 'gcr.io/cloud-builders/docker'
+    script: |
+      docker build -t us-central1-docker.pkg.dev/$PROJECT_ID/databot/databot -f Dockerfile .
 options:
   logging: CLOUD_LOGGING_ONLY
   automapSubstitutions: true
