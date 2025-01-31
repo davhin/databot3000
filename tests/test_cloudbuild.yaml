@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  script: |
+    docker build -t us-central1-docker.pkg.dev/$PROJECT_ID/databot/databot -f /test/test-Dockerfile .
+  automapSubstitutions: true
+options:
+  logging: CLOUD_LOGGING_ONLY
+images:
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/databot/testbot'
+timeout: 7200s

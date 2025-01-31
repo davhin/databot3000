@@ -1,0 +1,7 @@
+# Basic requirements for a test project
+numpy
+pandas
+scikit-learn
+matplotlib
+requests
+pytest

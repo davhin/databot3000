@@ -1,0 +1,18 @@
+# The purpose of this image is to serve as a easy testbed for cloud and other
+# integrations that is quick to build and eploy
+
+FROM python:3.11-slim-bookworm
+# The installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
+
+
+# Add and install requirements
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+
+
+# Copy the project into the image
+ADD . /app
+WORKDIR /app
+
+CMD ["python", "-m", "test_app"]
