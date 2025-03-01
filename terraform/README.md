@@ -1,0 +1,2 @@
+# Terraform
+This contains the terraform configs for several projects that run in my GCP infrastructure. To keep it all in one place I use a monorepo structure as outlined in this blog post: https://janik6n.net/posts/manage-multiple-terraform-projects-in-monorepo/
